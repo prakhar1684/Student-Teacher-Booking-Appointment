@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h2>Book Appointment</h2>
+        <form id="appointment-form">
+            <label for="student-name">Student Name:</label>
+            <input type="text" id="student-name" placeholder="Enter your name" required>
+
+            <label for="teacher-name">Teacher Name:</label>
+            <input type="text" id="teacher-name" placeholder="Enter teacher's name" required>
+
+            <label for="appointment-date">Appointment Date:</label>
+            <input type="date" id="appointment-date" required>
+
+            <label for="appointment-time">Appointment Time:</label>
+            <input type="time" id="appointment-time" required>
+
+            <label for="appointment-email">Email:</label>
+            <input type="email" id="appointment-email" placeholder="Enter your email" required>
+
+            <button type="submit" id="book-appointment-button">Book Appointment</button>
+            <p><a href="view-appointments.html">View Appointments</a></p>
+        </form>
+        <p id="booking-message"></p>
+    </div>
+
+    <script src="book.js"></script>
+</body>
+</html>

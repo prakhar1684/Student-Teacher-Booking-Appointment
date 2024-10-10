@@ -1,0 +1,88 @@
+/* General settings */
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff; /* White text */
+}
+
+/* Container styling */
+#container {
+    width: 400px; /* Fixed width for the container */
+    padding: 20px;
+    background: rgba(30, 30, 30, 0.9); /* Transparent dark background */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* Stronger shadow */
+    border-radius: 12px;
+}
+
+/* Form heading */
+h2 {
+    text-align: center;
+    color: #ff1744; /* Red color for headings */
+    margin-bottom: 20px;
+}
+
+/* Input fields */
+input, textarea {
+    width: calc(100% - 24px); /* Ensures padding doesn't cause overflow */
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input {
+    background-color: #333; /* Dark input background */
+    color: #ff1744; /* Red text for better visibility */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 23, 68, 0.5); /* Red glow on focus */
+}
+
+/* Button styles */
+button {
+    width: 100%; /* Full width for buttons */
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #ff1744; /* Red background for button */
+    color: #fff;
+}
+
+button:hover {
+    background-color: #b2102f; /* Darker red on hover */
+}
+
+/* Link styles */
+a {
+    color: #ff1744; /* Change the link color to red */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    color: #b2102f; /* Darker red on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #container {
+        width: 90%;
+    }
+
+    input, button {
+        width: calc(100% - 20px); /* Adjust width for smaller screens */
+    }
+}

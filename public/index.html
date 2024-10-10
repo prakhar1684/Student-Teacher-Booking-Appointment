@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Teacher Appointment System</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your existing CSS file -->
+</head>
+<body>
+    <div id="container">
+        <div id="register" class="active">
+            <h2>Register</h2>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <button id="register-button">Register</button>
+            <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+            <p id="register-message"></p>
+        </div>
+
+        <div id="login" style="display: none;">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button id="login-button">Login</button>
+            <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+            <p id="login-message"></p>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA45O40uOHBp5Yr8ktaXLsTA9IAVPpYdqM",
+            authDomain: "student-teacher-appointm-b4dc4.firebaseapp.com",
+            projectId: "student-teacher-appointm-b4dc4",
+            storageBucket: "student-teacher-appointm-b4dc4.appspot.com",
+            messagingSenderId: "594315525087",
+            appId: "1:594315525087:web:c895afdb1ac562bc69226a"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Toggle between Register and Login
+        document.getElementById('show-login').addEventListener('click', () => {
+            document.getElementById('register').classList.remove('active');
+            document.getElementById('login').style.display = 'block';
+            document.getElementById('register').style.display = 'none';
+        });
+
+        document.getElementById('show-register').addEventListener('click', () => {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('register').classList.add('active');
+            document.getElementById('register').style.display = 'block';
+        });
+
+        // Register
+        document.getElementById('register-button').addEventListener('click', () => {
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    document.getElementById('register-message').innerText = 'Registration successful!';
+                    window.location.href = "book-appointment.html"; // Change to your booking page
+                })
+                .catch((error) => {
+                    document.getElementById('register-message').innerText = `Error: ${error.message}`;
+                });
+        });
+
+        // Login
+        document.getElementById('login-button').addEventListener('click', () => {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    document.getElementById('login-message').innerText = 'Login successful!';
+                    window.location.href = "book-appointment.html"; // Change to your booking page
+                })
+                .catch((error) => {
+                    document.getElementById('login-message').innerText = `Error: ${error.message}`;
+                });
+        });
+    </script>
+</body>
+</html>
